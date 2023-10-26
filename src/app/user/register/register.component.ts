@@ -23,12 +23,17 @@ export class RegisterComponent implements OnInit {
   ]);
   password = new FormControl('',[
     Validators.required,
-    Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)
+    // Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)
   ]);
   confirmPassword = new FormControl('',[
     Validators.required
   ]);
-  phoneNumber = new FormControl('');
+  phoneNumber = new FormControl('', 
+  [
+   Validators.required,
+   Validators.minLength(11),
+   Validators.maxLength(14) 
+  ]);
 
   registerForm = new FormGroup({
     name: this.name,
